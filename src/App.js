@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Navbar from "./components/Navbar";
+import "./App.css";
+const App = () => {
+  const [users, setUsers] = useState([]);
+  const [showData, setShowData] = useState(false);
+  const fetchData = async () => {
+    try {
+      const response = await axios("https://reqres.in/api/users?page=1");
+      console.log(response.data.data);
+      setUsers(response.data.data);
+      setShowData(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // fetchData();
 
-function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      {/* <button onClick={fetchData}>Get User</button>
+      {showData &&
+        users.map((user) => (
+          <>
+            <li>{user.id}</li>
+          </>
+        ))} */}
     </div>
   );
-}
+};
 
 export default App;
