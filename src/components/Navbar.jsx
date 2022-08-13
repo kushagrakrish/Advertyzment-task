@@ -1,23 +1,19 @@
-import {
-  AppBar,
-  Button,
-  Toolbar,
-  Typography,
-  Box,
-  CircularProgress,
-} from "@mui/material/";
-import React from "react";
+import { AppBar, Button, Toolbar, Typography, Box } from "@mui/material/";
+import React, { useState } from "react";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { fetchData } = props;
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position='static'>
+        <AppBar position='static' xs={{ width: "90%" }}>
           <Toolbar>
             <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
               Advertyzment
             </Typography>
             <Button
+              onClick={fetchData}
               variant='contained'
               size='medium'
               style={{
