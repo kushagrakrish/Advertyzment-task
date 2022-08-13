@@ -4,8 +4,6 @@ import CardLayout from "./components/CardLayout";
 
 export const UserContext = React.createContext();
 const App = () => {
-  // };
-
   return (
     <div>
       <CardLayout />
